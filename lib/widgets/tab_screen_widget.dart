@@ -85,9 +85,8 @@ class _TabScreenState extends State<TabScreen> {
             iconTheme: new IconThemeData(color: Theme.of(context).hintColor),
           );
     return Platform.isIOS
-        ? CupertinoPageScaffold(
-            navigationBar: appBar,
-            child: CupertinoTabBar(
+        ? CupertinoTabScaffold(
+            tabBar: CupertinoTabBar(
               backgroundColor: Theme.of(context).primaryColor,
               currentIndex: _selectedPageIndex,
               onTap: _selectPage,
@@ -98,20 +97,23 @@ class _TabScreenState extends State<TabScreen> {
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(CupertinoIcons.home),
-                  label: 'Home',
+                  title: Text('Home'),
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(CupertinoIcons.news),
-                  label: 'Explore',
+                  title: Text('Home'),
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(CupertinoIcons.suit_heart),
-                  label: 'Favorite',
+                  title: Text('Favorite'),
                 ),
               ],
             ),
+            tabBuilder: (context, index) {
+              return CupertinoPageScaffold();
+            },
           )
         : Scaffold(
             key: scaffoldKey,
@@ -133,17 +135,17 @@ class _TabScreenState extends State<TabScreen> {
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(MaterialCommunityIcons.home_outline),
-                  label: 'Home',
+                  title: Text('Home'),
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(MaterialCommunityIcons.newspaper),
-                  label: 'Explore',
+                  title: Text('Explore'),
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(Icons.favorite_border),
-                  label: 'Favorite',
+                  title: Text('Favorite'),
                 ),
               ],
             ),
