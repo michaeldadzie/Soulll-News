@@ -107,7 +107,7 @@ class _TabScreenState extends State<TabScreen> {
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(CupertinoIcons.heart),
-                  title: Text('Favorite'),
+                  title: Text('Favorites'),
                 ),
               ],
             ),
