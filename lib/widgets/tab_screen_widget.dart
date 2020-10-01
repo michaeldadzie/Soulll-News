@@ -112,7 +112,10 @@ class _TabScreenState extends State<TabScreen> {
               ],
             ),
             tabBuilder: (context, index) {
-              return CupertinoPageScaffold();
+              return CupertinoPageScaffold(
+                navigationBar: appBar,
+                child: _pages[_selectedPageIndex]['page'],
+              );
             },
           )
         : Scaffold(
