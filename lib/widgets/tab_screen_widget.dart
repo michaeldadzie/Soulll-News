@@ -64,7 +64,7 @@ class _TabScreenState extends State<TabScreen> {
                 GestureDetector(
                   onTap: () {},
                   child: Icon(
-                    CupertinoIcons.ellipsis_circle,
+                    CupertinoIcons.ellipsis,
                     color: Theme.of(context).hintColor,
                   ),
                 )
@@ -106,7 +106,7 @@ class _TabScreenState extends State<TabScreen> {
                 ),
                 BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(CupertinoIcons.suit_heart),
+                  icon: Icon(CupertinoIcons.heart),
                   title: Text('Favorite'),
                 ),
               ],
