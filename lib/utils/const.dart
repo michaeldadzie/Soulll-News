@@ -15,7 +15,7 @@ class Constants {
   static Color lightBG = Color(0xfffcfcff);
   static Color darkBG = Colors.black;
   static Color darkBG1 = Colors.grey[900];
-  static Color voyage = Colors.green;
+  static Color soulll = Colors.green;
   static Color badgeColor = Colors.red;
 
   static ThemeData lightTheme = ThemeData(
@@ -23,7 +23,7 @@ class Constants {
     primaryColor: lightPrimary,
     accentColor: lightAccent,
     cursorColor: lightAccent,
-    hintColor: voyage,
+    hintColor: soulll,
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
         TargetPlatform.android: CustomPageTransitionBuilder(),
@@ -48,7 +48,7 @@ class Constants {
     backgroundColor: darkBG,
     primaryColor: darkPrimary,
     accentColor: darkAccent,
-    hintColor: voyage,
+    hintColor: soulll,
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
         TargetPlatform.android: CustomPageTransitionBuilder(),
