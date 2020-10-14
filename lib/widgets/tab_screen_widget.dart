@@ -64,12 +64,13 @@ class _TabScreenState extends State<TabScreen> {
                 GestureDetector(
                   onTap: () {},
                   child: Icon(
-                    CupertinoIcons.ellipsis,
+                    CupertinoIcons.ellipsis_vertical,
                     color: Theme.of(context).hintColor,
                   ),
                 )
               ],
             ),
+            actionsForegroundColor: Theme.of(context).hintColor,
           )
         : AppBar(
             centerTitle: true,
@@ -84,33 +85,64 @@ class _TabScreenState extends State<TabScreen> {
             ),
             iconTheme: new IconThemeData(color: Theme.of(context).hintColor),
           );
+    final tabBar = Platform.isIOS
+        ? CupertinoTabBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            currentIndex: _selectedPageIndex,
+            onTap: _selectPage,
+            inactiveColor: Theme.of(context).accentColor,
+            iconSize: 25,
+            activeColor: Theme.of(context).hintColor,
+            items: [
+              BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: Icon(CupertinoIcons.home),
+                label: 'Home'
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: Icon(CupertinoIcons.news),
+                label: 'Explore'
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: Icon(CupertinoIcons.heart),
+                label: 'Favorites'
+              ),
+            ],
+          )
+        : BottomNavigationBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            currentIndex: _selectedPageIndex,
+            onTap: _selectPage,
+            unselectedItemColor: Theme.of(context).accentColor,
+            selectedItemColor: Theme.of(context).hintColor,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            iconSize: 25,
+            elevation: 0,
+            items: [
+              BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: Icon(MaterialCommunityIcons.home_outline),
+                label: 'Home'
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: Icon(MaterialCommunityIcons.newspaper),
+                label: 'Explore'
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: Icon(MaterialCommunityIcons.heart_outline),
+                label: 'Favorites'
+              ),
+            ],
+          );
     return Platform.isIOS
         ? CupertinoTabScaffold(
-            tabBar: CupertinoTabBar(
-              backgroundColor: Theme.of(context).primaryColor,
-              currentIndex: _selectedPageIndex,
-              onTap: _selectPage,
-              inactiveColor: Theme.of(context).accentColor,
-              iconSize: 25,
-              activeColor: Theme.of(context).hintColor,
-              items: [
-                BottomNavigationBarItem(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(CupertinoIcons.home),
-                  title: Text('Home'),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(CupertinoIcons.news),
-                  title: Text('Home'),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(CupertinoIcons.heart),
-                  title: Text('Favorites'),
-                ),
-              ],
-            ),
+            tabBar: tabBar,
             tabBuilder: (context, index) {
               return CupertinoPageScaffold(
                 navigationBar: appBar,
@@ -123,35 +155,7 @@ class _TabScreenState extends State<TabScreen> {
             appBar: appBar,
             drawer: MainDrawer(),
             body: _pages[_selectedPageIndex]['page'],
-            bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: Theme.of(context).primaryColor,
-              currentIndex: _selectedPageIndex,
-              onTap: _selectPage,
-              unselectedItemColor: Theme.of(context).accentColor,
-              selectedItemColor: Theme.of(context).hintColor,
-              type: BottomNavigationBarType.fixed,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              iconSize: 25,
-              elevation: 0,
-              items: [
-                BottomNavigationBarItem(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(MaterialCommunityIcons.home_outline),
-                  title: Text('Home'),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(MaterialCommunityIcons.newspaper),
-                  title: Text('Explore'),
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  icon: Icon(Icons.favorite_border),
-                  title: Text('Favorite'),
-                ),
-              ],
-            ),
+            bottomNavigationBar: tabBar,
           );
   }
 }
