@@ -5,6 +5,7 @@ import 'package:news_app/helpers/news.dart';
 import 'package:news_app/models/category.dart';
 import 'package:news_app/screens/category_news_screen.dart';
 import 'package:news_app/widgets/category_card.dart';
+import 'package:news_app/widgets/news_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -45,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             )
           : SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
               child: Container(
                 child: Column(
                   children: [
@@ -62,9 +64,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
+                    Container(
+                      margin: EdgeInsets.only(top: 15),
+                      child: ListView.builder(
+                        itemCount: newsList.length,
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return NewsTile(
+                            imgUrl: newsList[index].urlToImage ?? "",
+                            title: newsList[index].title ?? "",
+                            desc: newsList[index].description ?? "",
+                            content: newsList[index].content ?? "",
+                            postUrl: newsList[index].articleUrl ?? "",
+                          );
+                        },
+                      ),
+                    )
                   ],
                 ),
-                //News Articles
               ),
             ),
     );
