@@ -10,6 +10,8 @@ environment:
 
 dependencies:
   google_fonts: ^1.1.0
+  cached_network_image: ^2.3.3
+  webview_flutter: ^1.0.5
   flutter_icons: ^1.1.0
   flutter:
     sdk: flutter
