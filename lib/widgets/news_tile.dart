@@ -42,8 +42,11 @@ class NewsTile extends StatelessWidget {
                 children: <Widget>[
                   ClipRRect(
                       borderRadius: BorderRadius.circular(6),
-                      child: Image.network(
-                        imgUrl,
+                      child: FadeInImage(
+                        placeholder: AssetImage('assets/loading/load.gif'),
+                        image: NetworkImage(
+                          imgUrl,
+                        ),
                         height: 200,
                         width: MediaQuery.of(context).size.width,
                         fit: BoxFit.cover,

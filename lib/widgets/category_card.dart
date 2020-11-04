@@ -8,14 +8,21 @@ class CategoryCard extends StatelessWidget {
 
   CategoryCard({this.imageAssetUrl, this.categoryName});
 
+  // void selectCategoryNews(BuildContext ctx) {
+  //   Navigator.of(ctx).pushNamed(CategoryNewsScreen.routeName, arguments: {
+  //     'title': categoryName,
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // selectCategoryNews(context);
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CategoryNews(
+            builder: (context) => CategoryNewsScreen(
               newsCategory: categoryName.toString(),
             ),
           ),
@@ -29,14 +36,14 @@ class CategoryCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               child: CachedNetworkImage(
                 imageUrl: imageAssetUrl,
-                height: 60,
+                height: 80,
                 width: 120,
                 fit: BoxFit.cover,
               ),
             ),
             Container(
               alignment: Alignment.center,
-              height: 60,
+              height: 80,
               width: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
