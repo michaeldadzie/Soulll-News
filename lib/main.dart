@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:news_app/screens/category_news_screen.dart';
 import 'screens/home_screen.dart';
 import 'widgets/tab_screen_widget.dart';
 import 'utils/const.dart';
@@ -25,6 +26,7 @@ class NewsApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (ctx) => TabScreen(),
+        // CategoryNewsScreen.routeName: (ctx) => CategoryNewsScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
