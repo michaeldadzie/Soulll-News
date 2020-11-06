@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/helpers/news.dart';
 import 'package:news_app/widgets/news_tile.dart';
 
 class CategoryNewsScreen extends StatefulWidget {
-  // static const routeName = '/category-news';
-
   final String newsCategory;
   CategoryNewsScreen({this.newsCategory});
   @override
@@ -15,8 +14,6 @@ class CategoryNewsScreen extends StatefulWidget {
 class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
   var newsList;
   bool _loading = true;
-  // var _loadedInitData = false;
-  // String categoryName;
 
   void getNews() async {
     NewsForCategories news = NewsForCategories();
@@ -26,17 +23,6 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
       _loading = false;
     });
   }
-
-  // @override
-  // void didChangeDependencies() {
-  //   if (!_loadedInitData) {
-  //     final routeArgs =
-  //         ModalRoute.of(context).settings.arguments as Map<String, String>;
-  //     categoryName = routeArgs['title'];
-  //     _loadedInitData = true;
-  //   }
-  //   super.didChangeDependencies();
-  // }
 
   @override
   void initState() {
@@ -48,33 +34,35 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // title: Text(categoryName),
-          ),
+        centerTitle: true,
+        iconTheme: new IconThemeData(color: Theme.of(context).hintColor),
+        title: Text(
+          widget.newsCategory,
+          style: GoogleFonts.raleway(
+              color: Theme.of(context).hintColor, fontSize: 22),
+        ),
+      ),
       body: _loading
           ? Center(
               child: CircularProgressIndicator(
                 backgroundColor: Theme.of(context).hintColor,
               ),
             )
-          : SingleChildScrollView(
-              child: Container(
-                child: Container(
-                  margin: EdgeInsets.only(top: 16),
-                  child: ListView.builder(
-                    itemCount: newsList.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return NewsTile(
-                        imgUrl: newsList[index].urlToImage ?? "",
-                        title: newsList[index].title ?? "",
-                        desc: newsList[index].description ?? "",
-                        content: newsList[index].content ?? "",
-                        postUrl: newsList[index].articleUrl ?? "",
-                      );
-                    },
-                  ),
-                ),
+          : Container(
+              margin: EdgeInsets.only(top: 16),
+              child: ListView.builder(
+                itemCount: newsList.length,
+                physics: BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
+                itemBuilder: (context, index) {
+                  return NewsTile(
+                    imgUrl: newsList[index].urlToImage ?? "",
+                    title: newsList[index].title ?? "",
+                    desc: newsList[index].description ?? "",
+                    content: newsList[index].content ?? "",
+                    postUrl: newsList[index].articleUrl ?? "",
+                  );
+                },
               ),
             ),
     );
