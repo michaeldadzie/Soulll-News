@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:news_app/helpers/data.dart';
 import 'package:news_app/helpers/news.dart';
 import 'package:news_app/models/category.dart';
-import 'package:news_app/screens/category_news_screen.dart';
 import 'package:news_app/widgets/category_card.dart';
 import 'package:news_app/widgets/news_tile.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
+}
+
+Future<void> _refreshArticles(BuildContext context) async {
+  await Provider.of<News>(context, listen: false).getNews();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -46,7 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             )
           : SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
+              physics: BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
               child: Container(
                 child: Column(
                   children: [
@@ -55,6 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 70,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics()),
                         itemCount: categories.length,
                         itemBuilder: (context, index) {
                           return CategoryCard(
