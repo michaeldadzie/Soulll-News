@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:news_app/helpers/news.dart';
 import 'package:news_app/screens/category_news_screen.dart';
+import 'package:provider/provider.dart';
 import 'screens/home_screen.dart';
 import 'widgets/tab_screen_widget.dart';
 import 'utils/const.dart';
@@ -18,21 +20,27 @@ void main() {
 class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Soulll News',
-      theme: Constants.lightTheme,
-      darkTheme: Constants.darkTheme,
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => TabScreen(),
-        // CategoryNewsScreen.routeName: (ctx) => CategoryNewsScreen(),
-      },
-      onUnknownRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (ctx) => HomeScreen(),
-        );
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: News(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Soulll News',
+        theme: Constants.lightTheme,
+        darkTheme: Constants.darkTheme,
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => TabScreen(),
+        },
+        onUnknownRoute: (settings) {
+          return MaterialPageRoute(
+            builder: (ctx) => HomeScreen(),
+          );
+        },
+      ),
     );
   }
 }
