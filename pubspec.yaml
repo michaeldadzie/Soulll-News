@@ -13,8 +13,10 @@ dependencies:
   cached_network_image: ^2.3.3
   webview_flutter: ^1.0.5
   flutter_icons: ^1.1.0
+  provider: ^4.3.2+2
   flutter:
     sdk: flutter
+  share: any
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
