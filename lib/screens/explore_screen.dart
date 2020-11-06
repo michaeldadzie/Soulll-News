@@ -39,21 +39,20 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: CircularProgressIndicator(
                   backgroundColor: Theme.of(context).hintColor),
             )
-          : SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(left: 5, right: 5),
-                height: MediaQuery.of(context).size.height - 130,
-                child: ListView.builder(
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    return CategoryExplore(
-                      imageAssetUrl: categories[index].imageAssetUrl,
-                      categoryName: categories[index].categoryName,
-                    );
-                  },
-                ),
+          : Container(
+              padding: EdgeInsets.only(left: 5, right: 5),
+              height: MediaQuery.of(context).size.height,
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return CategoryExplore(
+                    imageAssetUrl: categories[index].imageAssetUrl,
+                    categoryName: categories[index].categoryName,
+                  );
+                },
               ),
-              physics: ClampingScrollPhysics(),
             ),
     );
   }
