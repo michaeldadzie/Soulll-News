@@ -5,6 +5,12 @@ List<CategoryModel> getCategories() {
   CategoryModel categoryModel;
 
   categoryModel = new CategoryModel();
+  categoryModel.categoryName = "General";
+  categoryModel.imageAssetUrl =
+      "https://image.freepik.com/free-photo/business-people-reading-newspaper_53876-14764.jpg";
+  myCategories.add(categoryModel);
+
+  categoryModel = new CategoryModel();
   categoryModel.categoryName = "Business";
   categoryModel.imageAssetUrl =
       "https://cinitaslifestyle.com/wp-content/uploads/2019/09/business-3224643_1920.jpg";
@@ -13,13 +19,7 @@ List<CategoryModel> getCategories() {
   categoryModel = new CategoryModel();
   categoryModel.categoryName = "Entertainment";
   categoryModel.imageAssetUrl =
-      "https://alltips.in/wp-content/uploads/2019/11/Entertainment.jpg";
-  myCategories.add(categoryModel);
-
-  categoryModel = new CategoryModel();
-  categoryModel.categoryName = "General";
-  categoryModel.imageAssetUrl =
-      "https://image.freepik.com/free-photo/business-people-reading-newspaper_53876-14764.jpg";
+      "https://mapworldgroup.com/wp-content/uploads/2019/10/Entertainment.jpg";
   myCategories.add(categoryModel);
 
   categoryModel = new CategoryModel();

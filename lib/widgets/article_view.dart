@@ -18,7 +18,7 @@ class _ArticleViewState extends State<ArticleView> {
   @override
   Widget build(BuildContext context) {
     String url = widget.postUrl;
-    String subject = "Share";
+    String subject = "Share News Article";
     return Scaffold(
       body: SafeArea(
         child: Container(
