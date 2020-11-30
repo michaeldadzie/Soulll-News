@@ -34,13 +34,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: _loading
           ? Center(
               child: CircularProgressIndicator(
                   backgroundColor: Theme.of(context).hintColor),
             )
           : Container(
-              padding: EdgeInsets.only(left: 5, right: 5),
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
                 physics: BouncingScrollPhysics(
