@@ -48,21 +48,23 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
                 backgroundColor: Theme.of(context).hintColor,
               ),
             )
-          : Container(
-              margin: EdgeInsets.only(top: 16),
-              child: ListView.builder(
-                itemCount: newsList.length,
-                physics: BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
-                itemBuilder: (context, index) {
-                  return NewsTile(
-                    imgUrl: newsList[index].urlToImage ?? "",
-                    title: newsList[index].title ?? "",
-                    desc: newsList[index].description ?? "",
-                    content: newsList[index].content ?? "",
-                    postUrl: newsList[index].articleUrl ?? "",
-                  );
-                },
+          : Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                child: ListView.builder(
+                  itemCount: newsList.length,
+                  physics: BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
+                  itemBuilder: (context, index) {
+                    return NewsTile(
+                      imgUrl: newsList[index].urlToImage ?? "",
+                      title: newsList[index].title ?? "",
+                      desc: newsList[index].description ?? "",
+                      content: newsList[index].content ?? "",
+                      postUrl: newsList[index].articleUrl ?? "",
+                    );
+                  },
+                ),
               ),
             ),
     );
