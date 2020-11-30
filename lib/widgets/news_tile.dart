@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:news_app/widgets/article_view.dart';
 
 class NewsTile extends StatelessWidget {
   final String imgUrl, title, desc, content, postUrl;
+  final DateTime publishedAt;
 
   NewsTile(
       {this.imgUrl,
       this.desc,
       this.title,
       this.content,
-      @required this.postUrl});
+      @required this.postUrl,
+      this.publishedAt});
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +29,10 @@ class NewsTile extends StatelessWidget {
         );
       },
       child: Container(
-          margin: EdgeInsets.only(bottom: 24),
           width: MediaQuery.of(context).size.width,
           child: Container(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.only(bottom: 20),
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -68,8 +70,17 @@ class NewsTile extends StatelessWidget {
                   Text(
                     desc,
                     maxLines: 2,
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
-                  )
+                    style:
+                        GoogleFonts.raleway(color: Colors.grey, fontSize: 14),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    Jiffy(publishedAt).fromNow().toString(),
+                    style: GoogleFonts.raleway(
+                        fontSize: 14, color: Theme.of(context).accentColor),
+                  ),
                 ],
               ),
             ),
