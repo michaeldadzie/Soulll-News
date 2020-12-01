@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/helpers/news.dart';
+import 'package:news_app/widgets/explore_news_tile.dart';
 import 'package:news_app/widgets/news_tile.dart';
 
 class CategoryNewsScreen extends StatefulWidget {
@@ -35,11 +36,18 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        iconTheme: new IconThemeData(color: Theme.of(context).hintColor),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         title: Text(
           widget.newsCategory,
           style: GoogleFonts.raleway(
-              color: Theme.of(context).hintColor, fontSize: 22),
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).accentColor),
         ),
       ),
       body: _loading
@@ -56,7 +64,7 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
                   physics: BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics()),
                   itemBuilder: (context, index) {
-                    return NewsTile(
+                    return ExploreNewsTile(
                       imgUrl: newsList[index].urlToImage ?? "",
                       title: newsList[index].title ?? "",
                       desc: newsList[index].description ?? "",
