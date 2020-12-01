@@ -15,22 +15,50 @@ class _ArticleViewState extends State<ArticleView> {
       Completer<WebViewController>();
   bool isScrollingDown = false;
 
+  Future<String> get _url async {
+    await Future.delayed(Duration(seconds: 2));
+    return widget.postUrl;
+  }
+
   @override
   Widget build(BuildContext context) {
     String url = widget.postUrl;
     String subject = "Share News Article";
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: WebView(
-            initialUrl: widget.postUrl,
-            onWebViewCreated: (WebViewController webViewController) {
-              _controller.complete(webViewController);
-            },
-          ),
-        ),
+      body: Stack(
+        children: [
+          FutureBuilder(
+              future: _url,
+              builder: (BuildContext context, AsyncSnapshot snapshot) =>
+                  snapshot.hasData
+                      ? SafeArea(
+                          child: Container(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            child: WebView(
+                              initialUrl: widget.postUrl,
+                              onWebViewCreated:
+                                  (WebViewController webViewController) {
+                                _controller.complete(webViewController);
+                              },
+                            ),
+                          ),
+                        )
+                      : Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.green,
+                          ),
+                        )),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            child: AppBar(
+              backgroundColor: Colors.transparent,
+              iconTheme: IconThemeData(color: Colors.green),
+            ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
