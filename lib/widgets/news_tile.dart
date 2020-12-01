@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:news_app/widgets/article_view.dart';
+import 'package:page_transition/page_transition.dart';
 
 class NewsTile extends StatelessWidget {
   final String imgUrl, title, desc, content, postUrl;
@@ -20,13 +22,12 @@ class NewsTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ArticleView(
-              postUrl: postUrl,
-            ),
-          ),
-        );
+            context,
+            PageTransition(
+                child: ArticleView(
+                  postUrl: postUrl,
+                ),
+                type: PageTransitionType.rightToLeftWithFade));
       },
       child: Container(
           width: MediaQuery.of(context).size.width,
@@ -46,7 +47,7 @@ class NewsTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                       child: FadeInImage(
                         placeholder: AssetImage('assets/loading/load.gif'),
-                        image: NetworkImage(
+                        image: CachedNetworkImageProvider(
                           imgUrl,
                         ),
                         height: 200,
