@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/helpers/data.dart';
 import 'package:news_app/helpers/news.dart';
 import 'package:news_app/models/category.dart';
@@ -34,17 +35,29 @@ class _ExploreScreenState extends State<ExploreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: _loading
-          ? Center(
-              child: CircularProgressIndicator(
-                  backgroundColor: Theme.of(context).hintColor),
-            )
-          : Container(
+        body: CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          expandedHeight: 100,
+          pinned: true,
+          elevation: 0,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text(
+              'Topics',
+              style: GoogleFonts.raleway(
+                  color: Theme.of(context).hintColor,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ),
+            titlePadding: EdgeInsets.only(left: 20),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Container(
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
-                physics: BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return CategoryExplore(
@@ -54,6 +67,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 },
               ),
             ),
-    );
+          ]),
+        )
+      ],
+    ));
   }
 }
