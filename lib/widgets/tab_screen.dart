@@ -17,7 +17,7 @@ class TabScreenState extends State<TabScreen> {
 
   final List<TabItem> tabs = [
     TabItem(
-      tabName: "News",
+      tabName: "Today",
       icon: Icons.home,
       page: HomeScreen(),
     ),
