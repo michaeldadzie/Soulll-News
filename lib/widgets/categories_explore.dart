@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/screens/category_news_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CategoryExplore extends StatelessWidget {
   final String imageAssetUrl, categoryName;
@@ -11,13 +12,12 @@ class CategoryExplore extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CategoryNewsScreen(
-                newsCategory: categoryName.toString(),
-              ),
-            ),
-          );
+              context,
+              PageTransition(
+                  child: CategoryNewsScreen(
+                    newsCategory: categoryName.toString(),
+                  ),
+                  type: PageTransitionType.rightToLeftWithFade));
         },
         child: ListTile(
           leading: ClipRRect(
