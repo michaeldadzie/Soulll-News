@@ -2,20 +2,24 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:news_app/helpers/data.dart';
+import 'package:news_app/models/article.dart';
 import 'package:news_app/widgets/article_view.dart';
 import 'package:page_transition/page_transition.dart';
 
 class ExploreNewsTile extends StatelessWidget {
-  final String imgUrl, title, desc, content, postUrl;
+  final String imgUrl, title, desc, content, postUrl, author;
   final DateTime publishedAt;
 
-  ExploreNewsTile(
-      {this.imgUrl,
-      this.desc,
-      this.title,
-      this.content,
-      @required this.postUrl,
-      this.publishedAt});
+  ExploreNewsTile({
+    this.imgUrl,
+    this.desc,
+    this.title,
+    this.content,
+    @required this.postUrl,
+    this.publishedAt,
+    this.author,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,7 @@ class ExploreNewsTile extends StatelessWidget {
                   left: 0,
                   right: 170,
                   top: 0,
-                  bottom: 0,
+                  bottom: 40,
                   child: Container(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,6 +62,8 @@ class ExploreNewsTile extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).accentColor),
+                          maxLines: 6,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
@@ -73,10 +79,18 @@ class ExploreNewsTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            Jiffy(publishedAt).fromNow().toString(),
+                            author,
                             style: GoogleFonts.raleway(
                                 fontSize: 14,
-                                color: Theme.of(context).accentColor),
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            Jiffy(publishedAt).fromNow().toString(),
+                            style: GoogleFonts.raleway(
+                                fontSize: 14, color: Colors.grey),
                           ),
                         ],
                       ),
