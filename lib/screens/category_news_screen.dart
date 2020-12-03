@@ -70,6 +70,7 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
                       desc: newsList[index].description ?? "",
                       content: newsList[index].content ?? "",
                       postUrl: newsList[index].articleUrl ?? "",
+                      author: newsList[index].author ?? "",
                     );
                   },
                 ),
