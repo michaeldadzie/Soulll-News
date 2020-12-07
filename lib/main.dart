@@ -2,15 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:news_app/helpers/news.dart';
-import 'package:news_app/screens/category_news_screen.dart';
 import 'package:provider/provider.dart';
 import 'screens/home_screen.dart';
-import 'widgets/tab_screen_widget.dart';
+import 'widgets/tab_screen.dart';
 import 'utils/const.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
       statusBarColor: Colors.transparent, // status bar color
     ),
   );
