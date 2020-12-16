@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:news_app/screens/explore_screen.dart';
-import 'package:news_app/screens/favorites_screen.dart';
+import 'package:news_app/screens/audio_screen.dart';
 import 'package:news_app/screens/home_screen.dart';
 import 'nav_bar_item.dart';
 import 'bottom_nav_bar.dart';
@@ -29,7 +29,7 @@ class TabScreenState extends State<TabScreen> {
     TabItem(
       tabName: "Listen Now",
       icon: MaterialCommunityIcons.headphones,
-      page: FavoritesScreen(),
+      page: AudioNews(),
     ),
   ];
 
