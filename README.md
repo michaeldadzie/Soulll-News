@@ -4,8 +4,8 @@ Soulll News is powered by [newsapi.org](https://newsapi.org) for news articles
 
 ## Features
 
-- Browse and search articles from many sources, made possible by the [newsapi.org API](https://newsapi.org).
-- Read previews and share articles.
+- Browse articles from many sources, made possible by the [newsapi.org API](https://newsapi.org).
+- Read and share articles.
 
 ## Building
 
