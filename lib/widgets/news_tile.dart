@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
@@ -22,12 +23,11 @@ class NewsTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            PageTransition(
-                child: ArticleView(
-                  postUrl: postUrl,
-                ),
-                type: PageTransitionType.rightToLeftWithFade));
+          context,
+          CupertinoPageRoute(
+            builder: (context) => ArticleView(),
+          ),
+        );
       },
       child: Container(
           width: MediaQuery.of(context).size.width,
