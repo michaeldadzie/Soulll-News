@@ -53,21 +53,23 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
         ),
         SliverList(
-          delegate: SliverChildListDelegate([
-            Container(
-              height: MediaQuery.of(context).size.height,
-              child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  return CategoryExplore(
-                    imageAssetUrl: categories[index].imageAssetUrl,
-                    categoryName: categories[index].categoryName,
-                  );
-                },
+          delegate: SliverChildListDelegate(
+            [
+              Container(
+                height: MediaQuery.of(context).size.height,
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return CategoryExplore(
+                      imageAssetUrl: categories[index].imageAssetUrl,
+                      categoryName: categories[index].categoryName,
+                    );
+                  },
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
         )
       ],
     ));
