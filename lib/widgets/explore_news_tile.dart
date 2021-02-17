@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
@@ -26,12 +27,13 @@ class ExploreNewsTile extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           Navigator.push(
-              context,
-              PageTransition(
-                  child: ArticleView(
-                    postUrl: postUrl,
-                  ),
-                  type: PageTransitionType.rightToLeftWithFade));
+            context,
+            CupertinoPageRoute(
+              builder: (context) => ArticleView(
+                postUrl: postUrl,
+              ),
+            ),
+          );
         },
         child: Column(
           children: [
@@ -115,7 +117,7 @@ class ExploreNewsTile extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
           ],
         )
