@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/helpers/news.dart';
 import 'package:news_app/widgets/explore_news_tile.dart';
-import 'package:news_app/widgets/news_tile.dart';
 
 class CategoryNewsScreen extends StatefulWidget {
   final String newsCategory;
