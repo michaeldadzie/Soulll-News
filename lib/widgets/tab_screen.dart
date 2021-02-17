@@ -18,17 +18,17 @@ class TabScreenState extends State<TabScreen> {
   final List<TabItem> tabs = [
     TabItem(
       tabName: "Today",
-      icon: Icons.home,
+      icon: FlutterIcons.home_ant,
       page: HomeScreen(),
     ),
     TabItem(
       tabName: "Explore",
-      icon: MaterialCommunityIcons.newspaper,
+      icon: FlutterIcons.newspaper_o_faw,
       page: ExploreScreen(),
     ),
     TabItem(
       tabName: "Listen Now",
-      icon: MaterialCommunityIcons.headphones,
+      icon: FlutterIcons.headphones_fea,
       page: AudioNews(),
     ),
   ];
