@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:news_app/widgets/article_view.dart';
-import 'package:page_transition/page_transition.dart';
 
 class NewsTile extends StatelessWidget {
   final String imgUrl, title, desc, content, postUrl;
@@ -25,7 +24,9 @@ class NewsTile extends StatelessWidget {
         Navigator.push(
           context,
           CupertinoPageRoute(
-            builder: (context) => ArticleView(),
+            builder: (context) => ArticleView(
+              postUrl: postUrl,
+            ),
           ),
         );
       },
