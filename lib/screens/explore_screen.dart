@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news_app/helpers/data.dart';
-import 'package:news_app/helpers/news.dart';
+import 'package:news_app/models/data.dart';
+import 'package:news_app/services/news.dart';
 import 'package:news_app/models/category.dart';
 import 'package:news_app/widgets/categories_explore.dart';
 
@@ -37,78 +37,36 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Topics',
+          style: GoogleFonts.raleway(
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).accentColor),
+        ),
       ),
       body: SafeArea(
-          child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Topics',
-                style: GoogleFonts.raleway(
-                    color: Theme.of(context).hintColor,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height,
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    return CategoryExplore(
-                      imageAssetUrl: categories[index].imageAssetUrl,
-                      categoryName: categories[index].categoryName,
-                    );
-                  },
-                ),
-              ),
-            ],
+        child: Container(
+          child: GridView.builder(
+            padding: const EdgeInsets.all(20),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              childAspectRatio: 3 / 2,
+              maxCrossAxisExtent: 200,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+            ),
+            physics:
+                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              return CategoryExplore(
+                imageAssetUrl: categories[index].imageAssetUrl,
+                categoryName: categories[index].categoryName,
+              );
+            },
           ),
         ),
-      )),
+      ),
     );
-    //   Scaffold(
-    //     body: CustomScrollView(
-    //   slivers: [
-    //     SliverAppBar(
-    //       expandedHeight: 90,
-    //       pinned: true,
-    //       elevation: 0,
-    //       flexibleSpace: FlexibleSpaceBar(
-    //         title: Text(
-    //           'Topics',
-    //           style: GoogleFonts.raleway(
-    //               color: Theme.of(context).hintColor,
-    //               fontSize: 30,
-    //               fontWeight: FontWeight.bold),
-    //         ),
-    //         titlePadding: EdgeInsets.only(left: 20),
-    //       ),
-    //     ),
-    //     SliverList(
-    //       delegate: SliverChildListDelegate(
-    //         [
-    //           Container(
-    //             height: MediaQuery.of(context).size.height,
-    //             child: ListView.builder(
-    //               physics: NeverScrollableScrollPhysics(),
-    //               itemCount: categories.length,
-    //               itemBuilder: (context, index) {
-    //                 return CategoryExplore(
-    //                   imageAssetUrl: categories[index].imageAssetUrl,
-    //                   categoryName: categories[index].categoryName,
-    //                 );
-    //               },
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     )
-    //   ],
-    // ));
   }
 }
