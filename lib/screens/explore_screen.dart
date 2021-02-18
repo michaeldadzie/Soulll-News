@@ -35,26 +35,24 @@ class _ExploreScreenState extends State<ExploreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          expandedHeight: 100,
-          pinned: true,
-          elevation: 0,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Text(
-              'Topics',
-              style: GoogleFonts.raleway(
-                  color: Theme.of(context).hintColor,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
-            ),
-            titlePadding: EdgeInsets.only(left: 20),
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            [
+      appBar: AppBar(
+        elevation: 0,
+      ),
+      body: SafeArea(
+          child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Topics',
+                style: GoogleFonts.raleway(
+                    color: Theme.of(context).hintColor,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
+              ),
               Container(
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
@@ -70,8 +68,47 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ),
             ],
           ),
-        )
-      ],
-    ));
+        ),
+      )),
+    );
+    //   Scaffold(
+    //     body: CustomScrollView(
+    //   slivers: [
+    //     SliverAppBar(
+    //       expandedHeight: 90,
+    //       pinned: true,
+    //       elevation: 0,
+    //       flexibleSpace: FlexibleSpaceBar(
+    //         title: Text(
+    //           'Topics',
+    //           style: GoogleFonts.raleway(
+    //               color: Theme.of(context).hintColor,
+    //               fontSize: 30,
+    //               fontWeight: FontWeight.bold),
+    //         ),
+    //         titlePadding: EdgeInsets.only(left: 20),
+    //       ),
+    //     ),
+    //     SliverList(
+    //       delegate: SliverChildListDelegate(
+    //         [
+    //           Container(
+    //             height: MediaQuery.of(context).size.height,
+    //             child: ListView.builder(
+    //               physics: NeverScrollableScrollPhysics(),
+    //               itemCount: categories.length,
+    //               itemBuilder: (context, index) {
+    //                 return CategoryExplore(
+    //                   imageAssetUrl: categories[index].imageAssetUrl,
+    //                   categoryName: categories[index].categoryName,
+    //                 );
+    //               },
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     )
+    //   ],
+    // ));
   }
 }
