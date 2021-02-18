@@ -9,69 +9,49 @@ class CategoryExplore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            CupertinoPageRoute(
-              builder: (context) => CategoryNewsScreen(
-                newsCategory: categoryName.toString(),
-              ),
-            ),
-          );
-        },
-        child: ListTile(
-          contentPadding: EdgeInsets.zero,
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Container(
-              height: 40,
-              width: 40,
-              child: Image.network(
-                imageAssetUrl,
-                fit: BoxFit.contain,
-              ),
+      onTap: () {
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => CategoryNewsScreen(
+              newsCategory: categoryName.toString(),
             ),
           ),
-          title: Text(
-            categoryName,
-            style: GoogleFonts.raleway(
-                color: Theme.of(context).accentColor, fontSize: 20),
-          ),
-        )
-        // Container(
-        //   margin: EdgeInsets.all(10),
-        //   child: Stack(
-        //     children: <Widget>[
-        //       ClipRRect(
-        //         borderRadius: BorderRadius.circular(5),
-        //         child: CachedNetworkImage(
-        //           imageUrl: imageAssetUrl,
-        //           height: 150,
-        //           width: MediaQuery.of(context).size.width,
-        //           fit: BoxFit.cover,
-        //         ),
-        //       ),
-        //       Container(
-        //         alignment: Alignment.center,
-        //         height: 150,
-        //         width: MediaQuery.of(context).size.width,
-        //         decoration: BoxDecoration(
-        //           borderRadius: BorderRadius.circular(5),
-        //           color: Colors.black26,
-        //         ),
-        //         child: Text(
-        //           categoryName,
-        //           textAlign: TextAlign.center,
-        //           style: GoogleFonts.raleway(
-        //             color: Colors.white,
-        //             fontSize: 30,
-        //             fontWeight: FontWeight.w300,
-        //           ),
-        //         ),
-        //       )
-        //     ],
-        //   ),
-        // ),
         );
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Stack(
+          children: [
+            FadeInImage(
+              placeholder: AssetImage('assets/loading/load.gif'),
+              fadeInDuration: Duration(milliseconds: 300),
+              image: NetworkImage(imageAssetUrl),
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
+            Container(
+              color: Colors.black38,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: EdgeInsets.all(15),
+                child: Text(
+                  categoryName,
+                  style: GoogleFonts.raleway(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                  softWrap: true,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
