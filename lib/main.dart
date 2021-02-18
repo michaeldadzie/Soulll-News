@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:news_app/helpers/news.dart';
+import 'package:news_app/widgets/tabscreen.dart';
+import 'package:news_app/services/news.dart';
 import 'package:provider/provider.dart';
-import 'screens/home_screen.dart';
-import 'widgets/tab_screen.dart';
 import 'utils/const.dart';
 
 void main() {
@@ -14,6 +13,12 @@ void main() {
       statusBarIconBrightness: Brightness.dark,
       statusBarColor: Colors.transparent, // status bar color
     ),
+  );
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
   );
   runApp(NewsApp());
 }
@@ -37,8 +42,8 @@ class NewsApp extends StatelessWidget {
           '/': (ctx) => TabScreen(),
         },
         onUnknownRoute: (settings) {
-          return MaterialPageRoute(
-            builder: (ctx) => HomeScreen(),
+          return CupertinoPageRoute(
+            builder: (ctx) => TabScreen(),
           );
         },
       ),
