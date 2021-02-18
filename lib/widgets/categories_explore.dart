@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/screens/category_news_screen.dart';
-import 'package:page_transition/page_transition.dart';
 
 class CategoryExplore extends StatelessWidget {
   final String imageAssetUrl, categoryName;
@@ -22,6 +20,7 @@ class CategoryExplore extends StatelessWidget {
           );
         },
         child: ListTile(
+          contentPadding: EdgeInsets.zero,
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: Container(
