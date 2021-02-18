@@ -3,10 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:news_app/helpers/data.dart';
-import 'package:news_app/models/article.dart';
 import 'package:news_app/widgets/article_view.dart';
-import 'package:page_transition/page_transition.dart';
 
 class ExploreNewsTile extends StatelessWidget {
   final String imgUrl, title, desc, content, postUrl, author;
