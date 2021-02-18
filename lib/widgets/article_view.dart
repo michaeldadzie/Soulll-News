@@ -46,11 +46,11 @@ class _ArticleViewState extends State<ArticleView> {
                         box.localToGlobal(Offset.zero) & box.size);
               },
               child: Text(
-                'share',
+                'Share Now',
                 style: GoogleFonts.raleway(
                     color: Theme.of(context).accentColor,
                     fontSize: 17,
-                    fontWeight: FontWeight.w400),
+                    fontWeight: FontWeight.bold),
               ),
             ),
           )
