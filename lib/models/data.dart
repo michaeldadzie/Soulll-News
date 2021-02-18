@@ -5,7 +5,7 @@ List<CategoryModel> getCategories() {
   CategoryModel categoryModel;
 
   categoryModel = new CategoryModel();
-  categoryModel.categoryName = "General";
+  categoryModel.categoryName = "World";
   categoryModel.imageAssetUrl =
       "https://image.freepik.com/free-photo/business-people-reading-newspaper_53876-14764.jpg";
   myCategories.add(categoryModel);
@@ -41,6 +41,21 @@ List<CategoryModel> getCategories() {
   categoryModel.categoryName = "Technology";
   categoryModel.imageAssetUrl =
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80";
+  myCategories.add(categoryModel);
+
+  categoryModel = new CategoryModel();
+  categoryModel.categoryName = "Politics";
+  categoryModel.imageAssetUrl = "https://vistapointe.net/images/politics-2.jpg";
+  myCategories.add(categoryModel);
+
+  categoryModel = new CategoryModel();
+  categoryModel.categoryName = "Food";
+  categoryModel.imageAssetUrl = "https://vistapointe.net/images/food-4.jpg";
+  myCategories.add(categoryModel);
+
+  categoryModel = new CategoryModel();
+  categoryModel.categoryName = "Travel";
+  categoryModel.imageAssetUrl = "https://vistapointe.net/images/travel-7.jpg";
   myCategories.add(categoryModel);
 
   return myCategories;
