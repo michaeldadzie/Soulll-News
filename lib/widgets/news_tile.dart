@@ -38,14 +38,14 @@ class NewsTile extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(6),
-                      bottomLeft: Radius.circular(6))),
+                      bottomRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(10),
                       child: FadeInImage(
                         placeholder: AssetImage('assets/loading/load.gif'),
                         image: CachedNetworkImageProvider(
