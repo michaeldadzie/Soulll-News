@@ -26,7 +26,7 @@ class CategoryExplore extends StatelessWidget {
             FadeInImage(
               placeholder: AssetImage('assets/loading/load.gif'),
               fadeInDuration: Duration(milliseconds: 300),
-              image: NetworkImage(imageAssetUrl),
+              image: AssetImage(imageAssetUrl),
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
