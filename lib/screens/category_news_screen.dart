@@ -36,6 +36,8 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.of(context).pop();
