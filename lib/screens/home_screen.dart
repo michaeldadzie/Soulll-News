@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:news_app/helpers/data.dart';
-import 'package:news_app/helpers/news.dart';
+import 'package:news_app/models/data.dart';
+import 'package:news_app/providers/news_provder.dart';
+import 'package:news_app/services/news.dart';
 import 'package:news_app/models/category.dart';
-import 'package:news_app/widgets/category_card.dart';
 import 'package:news_app/widgets/news_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -13,18 +13,12 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-// Future<void> _refreshArticles(BuildContext context) async {
-//   await Provider.of<News>(context, listen: false).getNews();
-// }
-
 class _HomeScreenState extends State<HomeScreen> {
-  bool _loading;
-  var newsList;
-
-  List<CategoryModel> categories = List<CategoryModel>();
+  bool _loading ;
+  List newsList;
+  News news = News();
 
   void getNews() async {
-    News news = News();
     await news.getNews();
     newsList = news.news;
     setState(() {
@@ -32,78 +26,86 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // NewsProvider get provider {
+  //   return Provider.of<NewsProvider>(context, listen: false);
+  // }
+
   @override
   void initState() {
     _loading = true;
     super.initState();
-
-    categories = getCategories();
     getNews();
+    // provider.getNews(loading);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: _loading
-            ? Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Theme.of(context).hintColor,
+        child: SingleChildScrollView(
+          physics:
+              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 5),
+                Text(
+                  'News',
+                  style: GoogleFonts.raleway(
+                      color: Theme.of(context).accentColor,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
                 ),
-              )
-            : SingleChildScrollView(
-                physics: BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 5),
-                      Text(
-                        'News',
-                        style: GoogleFonts.raleway(
-                            color: Theme.of(context).accentColor,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        DateFormat.MMMMd().format(DateTime.now()),
-                        style: GoogleFonts.raleway(
-                            color: Colors.grey,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Divider(
-                        color: Colors.grey,
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        'Top Stories',
-                        style: GoogleFonts.raleway(
-                            color: Theme.of(context).hintColor,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 10),
-                      // Container(
-                      //   padding: EdgeInsets.symmetric(horizontal: 16),
-                      //   height: 70,
-                      //   child: ListView.builder(
-                      //     scrollDirection: Axis.horizontal,
-                      //     physics: BouncingScrollPhysics(
-                      //         parent: AlwaysScrollableScrollPhysics()),
-                      //     itemCount: categories.length,
-                      //     itemBuilder: (context, index) {
-                      //       return CategoryCard(
-                      //         imageAssetUrl: categories[index].imageAssetUrl,
-                      //         categoryName: categories[index].categoryName,
-                      //       );
-                      //     },
-                      //   ),
-                      // ),
-                      Container(
+                SizedBox(height: 5),
+                Text(
+                  DateFormat.MMMMd().format(DateTime.now()),
+                  style: GoogleFonts.raleway(
+                    color: Colors.grey,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Divider(color: Colors.grey),
+                SizedBox(height: 15),
+                Text(
+                  'Top Stories',
+                  style: GoogleFonts.raleway(
+                      color: Theme.of(context).hintColor,
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                // Container(
+                //   padding: EdgeInsets.symmetric(horizontal: 16),
+                //   height: 70,
+                //   child: ListView.builder(
+                //     scrollDirection: Axis.horizontal,
+                //     physics: BouncingScrollPhysics(
+                //         parent: AlwaysScrollableScrollPhysics()),
+                //     itemCount: categories.length,
+                //     itemBuilder: (context, index) {
+                //       return CategoryCard(
+                //         imageAssetUrl: categories[index].imageAssetUrl,
+                //         categoryName: categories[index].categoryName,
+                //       );
+                //     },
+                //   ),
+                // ),
+                _loading
+                    ? Container(
+                        height: MediaQuery.of(context).size.height - 250,
+                        width: MediaQuery.of(context).size.width,
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Theme.of(context).hintColor,
+                          ),
+                        ),
+                      )
+                    : Container(
+                        margin: EdgeInsets.only(top: 30),
                         child: ListView.builder(
                           itemCount: newsList.length,
                           shrinkWrap: true,
@@ -120,10 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       )
-                    ],
-                  ),
-                ),
-              ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
