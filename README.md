@@ -1,3 +1,5 @@
+## Soulll News
+
 Soulll News is a news app built with Flutter and inspired by [Apple News](https://www.apple.com/apple-news/). 
 Soulll News is powered by [newsapi.org](https://newsapi.org) for news articles
 
