@@ -6,12 +6,12 @@ import 'package:news_app/secret.dart';
 
 class News with ChangeNotifier {
   List<Article> news = [];
+  String url =
+      "http://newsapi.org/v2/top-headlines?country=in&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=$apiKey";
+ 
+ 
   Future<void> getNews() async {
-    String url =
-        "http://newsapi.org/v2/top-headlines?country=in&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=$apiKey";
-
     var response = await http.get(url);
-
     var jsonData = jsonDecode(response.body);
 
     try {
