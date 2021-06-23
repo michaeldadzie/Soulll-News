@@ -31,6 +31,7 @@ class NewsTile extends StatelessWidget {
         );
       },
       child: Container(
+          margin: EdgeInsets.only(bottom: 30),
           width: MediaQuery.of(context).size.width,
           child: Container(
             child: Container(
