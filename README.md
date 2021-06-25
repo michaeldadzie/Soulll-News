@@ -1,16 +1,24 @@
 ## Soulll News
-
 Soulll News is a news app built with Flutter and inspired by [Apple News](https://www.apple.com/apple-news/). 
 Soulll News is powered by [newsapi.org](https://newsapi.org) for news articles
 
-
 ## Features
-
 - Browse articles from many sources, made possible by the [newsapi.org API](https://newsapi.org).
 - Read and share articles.
 
-## Building
+# Screenshots
+<table>
+   <tr>
+    <td>
+      <img src="https://github.com/michaeldadzie/Soulll-News/blob/master/assets/screenshots/sn1.png" />
+    </td>
+    <td>
+      <img src="https://github.com/michaeldadzie/Soulll-News/blob/master/assets/screenshots/sn2.png" />
+    </td>
+  </tr>
+</table>
 
+## Building
 To build and run the app on your device, do the following:
 
 -   [Install Flutter](https://flutter.dev/docs/get-started/install/) by following the instructions on their website.
@@ -19,10 +27,7 @@ To build and run the app on your device, do the following:
 -   Connect your devices/emulators and run the app using `flutter run` in the root of the project directory.
 
 ## Contributing
-
 The frontend of the app is 100% open source and I'd love if you could contribute to it! Please see the [contributing guidelines](CONTRIBUTING.md) for more details.
 
-
 ## License
-
 Soulll News is licensed under the MIT License - see the [license file](LICENSE) to learn more.
