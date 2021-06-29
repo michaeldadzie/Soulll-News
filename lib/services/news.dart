@@ -8,12 +8,9 @@ class News with ChangeNotifier {
   List<Article> news = [];
   String url =
       "http://newsapi.org/v2/top-headlines?country=in&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=$apiKey";
- 
- 
   Future<void> getNews() async {
     var response = await http.get(url);
     var jsonData = jsonDecode(response.body);
-
     try {
       if (jsonData['status'] == "ok") {
         jsonData["articles"].forEach((element) {
