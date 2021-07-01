@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool _loading ;
+  bool _loading;
   List newsList;
   News news = News();
 
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Divider(color: Colors.grey),
-                SizedBox(height: 15),
+                SizedBox(height: 10),
                 Text(
                   'Top Stories',
                   style: GoogleFonts.raleway(
@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       )
                     : Container(
-                        margin: EdgeInsets.only(top: 30),
+                        margin: EdgeInsets.only(top: 10),
                         child: ListView.builder(
                           itemCount: newsList.length,
                           shrinkWrap: true,
