@@ -78,22 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
-                // Container(
-                //   padding: EdgeInsets.symmetric(horizontal: 16),
-                //   height: 70,
-                //   child: ListView.builder(
-                //     scrollDirection: Axis.horizontal,
-                //     physics: BouncingScrollPhysics(
-                //         parent: AlwaysScrollableScrollPhysics()),
-                //     itemCount: categories.length,
-                //     itemBuilder: (context, index) {
-                //       return CategoryCard(
-                //         imageAssetUrl: categories[index].imageAssetUrl,
-                //         categoryName: categories[index].categoryName,
-                //       );
-                //     },
-                //   ),
-                // ),
                 _loading
                     ? Container(
                         height: MediaQuery.of(context).size.height - 250,
