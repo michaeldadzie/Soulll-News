@@ -34,7 +34,6 @@ class _CategoryNewsScreenState extends State<CategoryNewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         leading: IconButton(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
