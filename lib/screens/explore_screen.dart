@@ -37,7 +37,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        centerTitle: true,
         title: Text(
           'Topics',
           style: GoogleFonts.raleway(
